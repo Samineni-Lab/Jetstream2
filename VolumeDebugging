@@ -1,36 +1,37 @@
 1. Check Volume Mounting:
 Ensure that the volume /media/volumes/Stim_DGCmice is properly mounted and accessible. You can do this by running:
-
-bash
-Copy
+````
+*bash*
 df -h /media/volumes/Stim_DGCmice
+````
 This will show if the volume is correctly mounted and if there’s enough space available.
 
 2. Verify UUID for the Volume:
 If you're mounting by UUID, ensure that it matches the entry in /etc/fstab (if used for persistent mounting). To check the UUID, run:
-
-bash
-Copy
+````
+*bash*
 sudo blkid
+````
 This will list all available disks and partitions, so you can verify the UUID 5ba5fd30-fa70-417d-b633-1612ebf855be matches the volume you expect.
 
 3. Check System Logs for I/O Errors:
 The GPIO error in the dmesg output may indicate issues with I/O resources for your hardware. You can review the log in more detail by running:
-
-bash
-Copy
+````
+*bash*
 dmesg | grep -i gpio
+````
 This will allow you to focus on the specific error and see if it’s related to any device driver failures or resource conflicts.
 
 4. Permissions Check:
 Ensure you have the necessary permissions to access the volume and that it is accessible by the user account you are using for scp or WinSCP. Check the ownership and permissions with:
-
-bash
-Copy
+````
+*bash*
 ls -ld /media/volumes/Stim_DGCmice
+````
+
 If necessary, change the ownership or adjust permissions:
 
 bash
 Copy
-sudo chown user:user /media/volumes/Stim_DGCmice
-sudo chmod 755 /media/volumes/Stim_DGCmice
+sudo chown exouser:exouser /media/volumes/YOURVOLUME
+sudo chmod 755 /media/volumes/YOURVOLUME
